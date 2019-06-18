@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="
+		http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+		http://www.springframework.org/schema/mvc
+		http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+		http://www.springframework.org/schema/tx
+		http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+  <!--1.注解扫描的位置-->
+  <context:component-scan base-package="controller" />
+  <!-- 启动 mvc 注解驱动 -->
+  <mvc:annotation-driven />
+  <!-- 静态资源处理 -->
+  <mvc:default-servlet-handler/>
+  <!-- 配置视图解析器 -->
+  <!--servlet跳转JSP时，会自动在路径前加上prefix中的值，在路径后面加上suffix-->
+  <bean
+      class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+    <property name="prefix" value="/WEB-INF/" ></property>
+    <property name="suffix" value=".jsp"></property>
+  </bean>
+</beans>
